@@ -1,13 +1,13 @@
 import React from "react";
 import { shallow } from "enzyme";
-import App from "./App";
+import Input from "./Input";
 
-import { findByTestAttr } from "../test/testUtils";
+import { findByTestAttr, checkProps } from "../test/testUtils";
 
 const defaultProps = { success: false };
 
-const setup = () => {
-  return shallow(<App />);
+const setup = (secretWord = "party") => {
+  return shallow(<Input secretWord={secretWord} />);
 };
 
 /**
@@ -16,9 +16,3 @@ const setup = () => {
  * @param {object} props - Component props specific to this setup.
  * @returns {ShallowWrapper}
  */
-
-test("App renders without error", () => {
-  const wrapper = setup();
-  const component = findByTestAttr(wrapper, "component-app");
-  expect(component.length).toBe(1);
-});
